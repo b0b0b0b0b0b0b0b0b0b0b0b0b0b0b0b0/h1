@@ -1,0 +1,5 @@
+lives:
+  default: 10
+  command: "say Игрок %player% лишился всех жизней!"
+database:
+  file: "players.db"
