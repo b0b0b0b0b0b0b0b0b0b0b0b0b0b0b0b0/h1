@@ -1,4 +1,0 @@
-lives:
-  default: 10
-database:
-  file: "players.db"
