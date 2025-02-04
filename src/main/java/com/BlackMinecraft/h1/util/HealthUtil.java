@@ -22,7 +22,9 @@ public class HealthUtil {
         player.setHealthScale(newMaxHealth);
         player.setHealth(newMaxHealth);
         if (sendMessage) {
-            player.sendMessage(messagesManager.getMessage("life.info").replace("%lives%", String.valueOf(lives)));
+            String heartMessage = RussianTopLanguage.formatHearts(lives);
+            String message = messagesManager.getMessage("life.info").replace("%lives%", heartMessage);
+            player.sendMessage(message);
         }
     }
     /**
