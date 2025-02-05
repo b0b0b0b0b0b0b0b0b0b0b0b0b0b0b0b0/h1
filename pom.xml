@@ -6,7 +6,7 @@
 
     <groupId>com.black-minecraft</groupId>
     <artifactId>h1</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.4</version>
     <packaging>jar</packaging>
 
     <name>h1</name>
@@ -40,16 +40,6 @@
                         </goals>
                     </execution>
                 </executions>
-				<configuration>
-					<filters>
-						<filter>
-							<artifact>*:*</artifact>
-							<excludes>
-								<exclude>META-INF/maven/**</exclude>
-							</excludes>
-						</filter>
-					</filters>
-				</configuration>
             </plugin>
         </plugins>
         <resources>
