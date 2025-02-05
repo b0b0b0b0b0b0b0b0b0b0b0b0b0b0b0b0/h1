@@ -11,7 +11,6 @@ import java.util.function.Consumer;
 public class LifeManager {
     private final DatabaseManager databaseManager;
     private final int defaultLives;
-
     public LifeManager(DatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
         FileConfiguration config = H1.getInstance().getConfig();

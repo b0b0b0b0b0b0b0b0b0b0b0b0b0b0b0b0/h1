@@ -7,6 +7,7 @@ import com.BlackMinecraft.h1.listeners.PlayerDeathListener;
 import com.BlackMinecraft.h1.listeners.PlayerJoinListener;
 import com.BlackMinecraft.h1.listeners.PlayerRespawnListener;
 import com.BlackMinecraft.h1.managers.LifeManager;
+import com.BlackMinecraft.h1.placeholders.H1PlaceholderExpansion;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 public final class H1 extends JavaPlugin {
@@ -42,6 +43,12 @@ public final class H1 extends JavaPlugin {
         if (getCommand("h1") != null) {
             getCommand("h1").setExecutor(new H1Command(lifeManager, messagesManager, this));
         }
+        if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            new H1PlaceholderExpansion(this, getLifeManager()).register();
+            getLogger().info("H1 PlaceholderAPI expansion registered.");
+        } else {
+            getLogger().warning("PlaceholderAPI не найден! Плейсхолдеры H1 не будут работать.");
+        }
     }
     @Override
     public void onDisable() {
@@ -53,6 +60,5 @@ public final class H1 extends JavaPlugin {
     public static H1 getInstance() {return instance;}
     public ConfigManager getConfigManager() {return configManager;}
     public MessagesManager getMessagesManager() {return messagesManager;}
-    public DatabaseManager getDatabaseManager() {return databaseManager;}
     public LifeManager getLifeManager() {return lifeManager;}
 }
