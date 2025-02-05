@@ -5,7 +5,7 @@ api-version: '1.18'
 authors: [ b0b0b0 ]
 website: https://black-minecraft.com/
 softdepend: [PlaceholderAPI]
+libraries:
+  - com.zaxxer:HikariCP:6.2.1
 commands:
   h1:
-    description: Команды плагина H1.
-    usage: /h1 <give|set|reload> <игрок> <кол-во>
