@@ -1,5 +1,5 @@
 name: h1
-version: '1.0.5'
+version: '${project.version}'
 main: com.BlackMinecraft.h1.H1
 api-version: '1.18'
 authors: [ b0b0b0 ]

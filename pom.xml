@@ -6,7 +6,7 @@
 
     <groupId>com.black-minecraft</groupId>
     <artifactId>h1</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <packaging>jar</packaging>
 
     <name>h1</name>
@@ -69,6 +69,13 @@
         </plugins>
 
         <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>plugin.yml</include>
+                </includes>
+            </resource>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>false</filtering>
