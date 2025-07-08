@@ -2,6 +2,9 @@ package com.BlackMinecraft.h1.util;
 import com.BlackMinecraft.h1.config.MessagesManager;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
+
+import java.util.Objects;
+
 public class HealthUtil {
     /**
      * Обновляет здоровье игрока на основе количества жизней.
@@ -17,12 +20,12 @@ public class HealthUtil {
         if (newMaxHealth < 2.0) {
             newMaxHealth = 2.0;
         }
-        player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(newMaxHealth);
+        Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(newMaxHealth);
         player.setHealthScaled(true);
         player.setHealthScale(newMaxHealth);
         player.setHealth(newMaxHealth);
         if (sendMessage) {
-            String heartMessage = RussianTopLanguage.formatHearts(lives);
+            String heartMessage = RussianTopLanguage.formatHearts(lives, messagesManager.getLanguage());
             String message = messagesManager.getMessage("life.info").replace("%lives%", heartMessage);
             player.sendMessage(message);
         }

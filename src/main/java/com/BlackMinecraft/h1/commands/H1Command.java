@@ -103,7 +103,7 @@ public class H1Command implements CommandExecutor {
                     sender.sendMessage(ChatColor.RED + messagesManager.getMessage("no.permission"));
                     return true;
                 }
-                Player target = getTargetPlayer(sender, args, 1);
+                Player target = getTargetPlayer(sender, args);
                 if (target == null) return true;
                 String uuid = target.getUniqueId().toString();
                 int newLives = MAX_LIVES;
@@ -121,8 +121,8 @@ public class H1Command implements CommandExecutor {
                     return true;
                 }
                 plugin.reloadConfig();
-                plugin.getConfigManager().loadConfig();
-                plugin.getMessagesManager().reloadMessages();
+                H1.getConfigManager().loadConfig();
+                H1.getMessagesManager().reloadMessages();
                 sender.sendMessage(ChatColor.GREEN + messagesManager.getMessage("reload.success"));
                 return true;
             }
@@ -132,21 +132,11 @@ public class H1Command implements CommandExecutor {
             }
         }
     }
-    private static class ParsedArgs {
-        final Player target;
-        final int amount;
-        final String uuid;
-        final int currentLives;
 
-        ParsedArgs(Player target, int amount, String uuid, int currentLives) {
-            this.target = target;
-            this.amount = amount;
-            this.uuid = uuid;
-            this.currentLives = currentLives;
-        }
+    private record ParsedArgs(Player target, int amount, String uuid, int currentLives) {
     }
     private ParsedArgs parseTargetAndAmount(CommandSender sender, String[] args) {
-        Player target = getTargetPlayer(sender, args, 1);
+        Player target = getTargetPlayer(sender, args);
         if (target == null) return null;
         Integer amount = getAmount(sender, args);
         if (amount == null) return null;
@@ -154,20 +144,18 @@ public class H1Command implements CommandExecutor {
         int currentLives = lifeManager.getLives(uuid);
         return new ParsedArgs(target, amount, uuid, currentLives);
     }
-    private Player getTargetPlayer(CommandSender sender, String[] args, int index) {
-        if (args.length <= index) {
+    private Player getTargetPlayer(CommandSender sender, String[] args) {
+        if (args.length <= 1) {
             sender.sendMessage(ChatColor.RED + messagesManager.getMessage("command.usage"));
             return null;
         }
-        Player target = Bukkit.getPlayerExact(args[index]);
+        Player target = Bukkit.getPlayerExact(args[1]);
         if (target == null) {
             sender.sendMessage(ChatColor.RED + messagesManager.getMessage("player.not.found"));
         }
         return target;
     }
-    private Player getTargetPlayer(CommandSender sender, String[] args) {
-        return getTargetPlayer(sender, args, 1);
-    }
+
     private Integer getAmount(CommandSender sender, String[] args) {
         if (args.length < 3) {
             sender.sendMessage(ChatColor.RED + messagesManager.getMessage("command.usage"));

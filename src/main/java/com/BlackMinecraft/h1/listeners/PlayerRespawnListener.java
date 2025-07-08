@@ -13,10 +13,10 @@ public class PlayerRespawnListener implements Listener {
     private final LifeManager lifeManager;
     private final MessagesManager messagesManager;
     private final ConfigManager configManager;
-    public PlayerRespawnListener(H1 plugin, LifeManager lifeManager, MessagesManager messagesManager) {
+    public PlayerRespawnListener(LifeManager lifeManager, MessagesManager messagesManager) {
         this.lifeManager = lifeManager;
         this.messagesManager = messagesManager;
-        this.configManager = plugin.getConfigManager();
+        this.configManager = H1.getConfigManager();
     }
     @EventHandler
     public void onPlayerRespawn(PlayerRespawnEvent event) {

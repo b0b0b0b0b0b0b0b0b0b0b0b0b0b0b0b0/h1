@@ -1,0 +1,25 @@
+prefix: "§6[H1] §r"
+command:
+  usage: "Usage: /h1 <give|set|remove|recover|reload> <player> <amount>"
+  unknown: "Unknown command!"
+reload:
+  success: "Plugin reloaded successfully!"
+give:
+  success: "You gave %player% %amount% hearts."
+  received: "You received %amount% hearts."
+  max: "The player already has the maximum number of hearts (%max% hearts)."
+  limited: "You can only give the player %available% hearts to avoid exceeding the limit of %max% hearts."
+remove:
+  success: "You removed %amount% hearts from %player%."
+player:
+  not:
+    found: "Player not found!"
+no:
+  permission: "You don't have permission to use this command!"
+life:
+  info: "You now have %lives%."
+recover:
+  success: "You restored %player%'s life to the maximum."
+number:
+  format:
+    error: "Invalid number: %input%"

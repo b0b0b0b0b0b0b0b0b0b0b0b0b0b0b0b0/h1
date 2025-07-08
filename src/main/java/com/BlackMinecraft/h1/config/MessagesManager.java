@@ -6,18 +6,26 @@ import java.io.File;
 public class MessagesManager {
     private FileConfiguration messagesConfig;
     private final File messagesFile;
-    public MessagesManager(H1 plugin) {
-        this.messagesFile = new File(plugin.getDataFolder(), "messages.yml");
+    private final String language;
+    public MessagesManager(H1 plugin, String language) {
+        this.language = language;
+        this.messagesFile = initLangFile(plugin);
     }
+    public String getLanguage() { return language; }
+
     public void loadMessages() {
         messagesConfig = YamlConfiguration.loadConfiguration(messagesFile);
     }
+
     public FileConfiguration getMessagesConfig() {
         return messagesConfig;
     }
     public String getMessage(String path) {
         String prefix = messagesConfig.getString("prefix", "");
         return prefix + messagesConfig.getString(path, path);
+    }
+    private File initLangFile(H1 plugin) {
+        return new File(plugin.getDataFolder(), "messages_" + language + ".yml");
     }
     public void reloadMessages() {
         loadMessages();

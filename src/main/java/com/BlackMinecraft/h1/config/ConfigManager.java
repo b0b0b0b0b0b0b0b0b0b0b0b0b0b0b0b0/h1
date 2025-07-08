@@ -5,11 +5,9 @@ import java.io.File;
 public class ConfigManager {
     private final H1 plugin;
     private FileConfiguration config;
-    private final File configFile;
 
     public ConfigManager(H1 plugin) {
         this.plugin = plugin;
-        this.configFile = new File(plugin.getDataFolder(), "config.yml");
     }
 
     public void loadConfig() {

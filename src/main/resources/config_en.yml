@@ -1,0 +1,13 @@
+language: "en"    # en, ru
+lives:
+  # Default number of lives (hearts) for a new player
+  default: 10
+
+  # Command to execute when a player runs out of lives.
+  # You can use the %player% placeholder, which will be replaced with the player's name.
+  command: "say Player %player% has lost all their lives!"
+
+database:
+  # SQLite database file name.
+  # The file will be created in the plugin folder if it doesn't exist.
+  file: "players.db"
