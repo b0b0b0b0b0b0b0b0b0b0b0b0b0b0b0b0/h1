@@ -51,12 +51,12 @@ public final class H1 extends JavaPlugin {
             new H1PlaceholderExpansion(this, getLifeManager()).register();
             getLogger().info("H1 PlaceholderAPI expansion registered.");
         } else {
-            getLogger().warning("PlaceholderAPI не найден! Плейсхолдеры H1 не будут работать.");
+            getLogger().warning("PlaceholderAPI not found! H1 placeholders will not work.");
         }
     }
     @Override
     public void onDisable() {
-        getLogger().info("Плагин H1 выключается. Закрытие соединения с базой данных...");
+        getLogger().info("Closing connection to the database...");
         if (databaseManager != null) {
             databaseManager.close();
         }
