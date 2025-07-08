@@ -31,7 +31,7 @@ public final class H1 extends JavaPlugin {
 
         configManager = new ConfigManager(this);
         configManager.loadConfig();
-        String lang = configManager.getConfig().getString("language", "ru");
+        String lang = configManager.getConfig().getString("language", "en");
         File langFile = new File(getDataFolder(), "messages_" + lang + ".yml");
         if (!langFile.exists()) {
             saveResource("messages_" + lang + ".yml", false);
